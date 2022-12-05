@@ -725,8 +725,9 @@ class Helper {
         }
 
         array_walk_recursive($data, "static::replaceNullWithEmptyString", $convertToString);
-        header('Content-Type: application/json; charset=utf-8');
-        return(json_encode($data, 0));
+        response()->json($data
+        )->header('Content-Type: application/json;', 'charset=utf-8')->send();
+        exit;
     }
 
     public static function getChapterName($key=null)
